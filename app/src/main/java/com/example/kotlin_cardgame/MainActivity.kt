@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        // editText 를 이용한 닉네임 정규식
         binding.textInputLayout.editText?.addTextChangedListener(listener)
 
         binding.imageButton1.setOnClickListener {
