@@ -1,9 +1,12 @@
 package com.example.kotlin_cardgame
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.View
 import com.example.kotlin_cardgame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,57 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.textInputLayout.editText?.addTextChangedListener(listener)
+
+        binding.imageButton1.setOnClickListener {
+                // imageButton 을 누르면 pressed color 로 바뀌면서 해당 벡터 이미지가 imageview 로 이동
+            if (!binding.imageButton1.isSelected) {
+                binding.imageButton1.isSelected = true
+                binding.imageButton2.isSelected = false
+                binding.imageButton3.isSelected = false
+                binding.imageButton4.isSelected = false
+                binding.imageView.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_alt_24)
+            } else {
+                // imageButton 을 다시 누르면 unpressed color 로 바뀌면서 해당 벡터 이미지가 없어짐
+                binding.imageButton1.isSelected = false
+                binding.imageView.setImageResource(0)
+            }
+        }
+        binding.imageButton2.setOnClickListener {
+            if (!binding.imageButton2.isSelected) {
+                binding.imageButton2.isSelected = true
+                binding.imageButton1.isSelected = false
+                binding.imageButton3.isSelected = false
+                binding.imageButton4.isSelected = false
+                binding.imageView.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_24)
+            } else {
+                binding.imageButton2.isSelected = false
+                binding.imageView.setImageResource(0)
+            }
+        }
+        binding.imageButton3.setOnClickListener {
+            if (!binding.imageButton3.isSelected) {
+                binding.imageButton3.isSelected = true
+                binding.imageButton1.isSelected = false
+                binding.imageButton2.isSelected = false
+                binding.imageButton4.isSelected = false
+                binding.imageView.setImageResource(R.drawable.ic_baseline_sentiment_very_dissatisfied_24)
+            } else {
+                binding.imageButton3.isSelected = false
+                binding.imageView.setImageResource(0)
+            }
+        }
+        binding.imageButton4.setOnClickListener {
+            if (!binding.imageButton4.isSelected) {
+                binding.imageButton4.isSelected = true
+                binding.imageButton1.isSelected = false
+                binding.imageButton2.isSelected = false
+                binding.imageButton3.isSelected = false
+                binding.imageView.setImageResource(R.drawable.ic_baseline_sentiment_very_satisfied_24)
+            } else {
+                binding.imageButton4.isSelected = false
+                binding.imageView.setImageResource(0)
+            }
+        }
     }
 
     val listener = object : TextWatcher {
